@@ -1,0 +1,40 @@
+# Put all images into the source folder without subdirectories
+source_dir: "./source"
+# The dir where clustered images would be moved/copied to. 
+dest_dir: "./dest"
+
+# Which image of the cluster would be chosen as representative image, the first
+# one (0) or the last one (-1)
+representive_img: 0
+
+# How to move the clustered image to dest dir. Can be either "copy" or "move"
+copy_or_move: "move"
+
+# Whether to load the image as grey scale
+grey_scale: true
+
+# Number of threads to be used. -1 to use all threads. Value greater than the 
+# number of physical cores might reduce performance. 
+n_jobs: 4
+
+clustering:
+  # Whether to resize the image before pca. Mainly used to reduce the size of 
+  # the images, thus the memory usage, during clustering. 
+  resize: true
+  resize_factor: 0.3
+
+  # The target number of dimensions of PCA. Too low value would decrease 
+  # reliability of clustering while too high value would decrease speed as well 
+  # as reliability 
+  n_pca: 3
+
+  # The threshold under which the image would be considered as noise even if it 
+  # is selected into a cluster
+  probability_threshold: 0.003
+
+  # The minimum number of images that can be considered as a cluster, i.e. the
+  # minimum number of images in a stack
+  min_cluster_size: 8
+
+  # Whether to normalize each image 
+  normalize: true
